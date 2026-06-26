@@ -106,8 +106,12 @@ echo "Converting to compressed read-only DMG (dist/hold-that.dmg)..."
 rm -f dist/hold-that.dmg
 hdiutil convert "$TEMP_DMG" -format UDZO -imagekey zlib-level=9 -o dist/hold-that.dmg
 
+# Copy DMG to website folder for Vercel hosting
+echo "Copying hold-that.dmg to website folder..."
+cp dist/hold-that.dmg website/hold-that.dmg
+
 # Clean up staging and temporary files
 rm -rf "$DMG_STAGE"
 rm -f "$TEMP_DMG"
 
-echo "✓ Packaging complete! Generated a styled dist/hold-that.dmg"
+echo "✓ Packaging complete! Generated a styled dist/hold-that.dmg and copied to website/"
