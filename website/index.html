@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hold that — a little place between thinking and keeping</title>
+  <meta name="description" content="A macOS notch-adjacent temporary note-taking app. Keeps your notes alive for just today and tomorrow.">
+  
+  <!-- Open Graph / Facebook / iMessage -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="hold that — a little place between thinking and keeping">
+  <meta property="og:description" content="A macOS notch-adjacent temporary note-taking app. Keeps your notes alive for just today and tomorrow.">
+  <meta property="og:image" content="assets/holdthat.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="hold that — a little place between thinking and keeping">
+  <meta name="twitter:description" content="A macOS notch-adjacent temporary note-taking app. Keeps your notes alive for just today and tomorrow.">
+  <meta name="twitter:image" content="assets/holdthat.png">
+  <link rel="icon" type="image/png" href="assets/holdthat.png">
+  
+  <!-- Google Fonts: Syne Mono for page layout, DM Mono for folder mockup contents -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Poppins:wght@700&family=Syne+Mono&family=Lacquer&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Sticky Navigation Header -->
+  <header class="sticky-header">
+    <div class="header-logo">
+      <img src="assets/holdthat.png" alt="Hold That Logo" class="header-icon">
+      <span class="header-title">hold that</span>
+    </div>
+    <nav class="header-nav">
+      <a href="#scrollPresentation" class="nav-link">what it is</a>
+      <a href="#clutterSection" class="nav-link">why</a>
+      <a href="#slotMachineSection" class="nav-link">what it isnt</a>
+      <a href="#idgiSection" class="nav-link">i dont get it</a>
+    </nav>
+  </header>
+
+  <!-- Dynamic Interactive Grid Background (Inlined from Ref/grid.svg) -->
+  <div class="interactive-grid-container" id="gridContainer">
+    <svg id="gridSvg" viewBox="0 0 1517 992" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Radial Gradient for dynamic hover stroke-glow -->
+        <radialGradient id="gridGlowGradient" cx="-500" cy="-500" r="220" gradientUnits="userSpaceOnUse">
+          <stop id="glowStop0" offset="0%" stop-color="#FFF9EC" />
+          <stop id="glowStop100" offset="100%" stop-color="#FFF9EC" />
+        </radialGradient>
+        <clipPath id="clip0_367_129">
+          <rect width="1517" height="992" fill="white"/>
+        </clipPath>
+      </defs>
+      <g clip-path="url(#clip0_367_129)">
+        <path d="M148 53C148 53.6473 148 54.2947 146.425 188.478C144.851 322.662 141.701 590.362 141.105 740.41C140.508 890.458 142.56 914.74 144.674 938" stroke="url(#gridGlowGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M337.857 55.0256C337.857 54.7407 337.857 54.4559 335.323 195.788C332.789 337.12 327.721 620.079 325.8 773.994C323.879 927.91 325.259 944.208 326.681 961" stroke="url(#gridGlowGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M518.802 32.0073C518.802 31.8844 518.802 31.7615 517.906 171.705C517.01 311.648 515.219 591.662 516.379 748.92C517.539 906.177 521.707 932.194 526 959" stroke="url(#gridGlowGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M724 17C724 19.5758 724 22.1517 724.418 150.897C724.836 279.642 725.673 534.479 728.655 692.92C731.638 851.361 736.742 905.685 742 961" stroke="url(#gridGlowGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M950 6C950 6.10424 950 6.20847 951.414 116.471C952.829 226.733 955.657 447.149 962.966 601.799C970.274 756.448 981.977 838.65 988.091 885.776C994.205 932.903 994.377 942.463 993.765 950" stroke="url(#gridGlowGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M1128 8C1128 8.33512 1128 8.67024 1128.6 118.849C1129.21 229.028 1130.41 449.04 1136.81 596.23C1143.2 743.42 1154.75 811.121 1160.76 858.888C1166.77 906.655 1166.88 932.437 1167 959" stroke="url(#gridGlowGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M1297 1C1297 1.21583 1297 1.43165 1300.53 156.648C1304.06 311.865 1311.12 622.077 1315.63 789.714C1320.15 957.351 1321.9 973.013 1324 991" stroke="url(#gridGlowGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M25 92.9318C25.5078 92.9318 26.0155 92.9318 222.993 94.5482C419.971 96.1646 813.403 99.3974 1053.78 98.7324C1294.16 98.0674 1369.57 93.4067 1414.74 91.257C1459.91 89.1074 1472.55 89.61 1486 91.2009" stroke="url(#gridGlowGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M31.0057 232.821C30.8933 232.821 30.7809 232.821 202.885 230.101C374.989 227.381 719.312 221.941 959.664 214.748C1200.02 207.555 1325.96 198.775 1393.27 194.379C1460.59 189.984 1465.45 190.24 1474.99 192.051C1484.52 193.862 1498.58 197.22 1516 201.633" stroke="url(#gridGlowGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M31.0057 899.821C30.8933 899.821 30.7809 899.821 202.885 897.101C374.989 894.381 719.312 888.941 959.664 881.748C1200.02 874.555 1325.96 865.775 1393.27 861.379C1460.59 856.984 1465.45 857.24 1474.99 859.051C1484.52 860.862 1498.58 864.22 1516 868.633" stroke="url(#gridGlowGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M1 416.801C1 416.891 1 416.982 245.555 409.925C490.11 402.868 979.221 388.66 1234.12 380.822C1489.02 372.983 1494.88 371.945 1502 370.821" stroke="url(#gridGlowGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M21 616.91C21.6522 616.91 22.3043 616.91 268.659 602.72C515.014 588.53 1007.05 560.15 1514 530.91" stroke="url(#gridGlowGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M19.1286 756.78C18.5771 756.78 18.1043 757.204 18.0727 757.755C18.0411 758.307 18.4626 758.776 19.0142 758.805L19.0714 757.806L19.1286 756.78ZM1516 748.92C1516.55 748.917 1517 748.466 1517 747.914C1517 747.362 1516.55 746.917 1516 746.921L1516 747.921L1516 748.92ZM19.0714 757.806L19.0142 758.805C19.7043 758.84 20.4125 758.872 267.378 757.242L267.378 756.242L267.378 755.243C20.3372 756.873 19.742 756.839 19.1286 756.78L19.0714 757.806ZM267.378 756.242L267.378 757.242C514.381 755.611 1007.72 752.316 1516 748.92L1516 747.921L1516 746.921C1007.72 750.316 514.381 753.612 267.378 755.243L267.378 756.242Z" fill="url(#gridGlowGradient)"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Page Layout Container -->
+  <main class="page-container">
+    
+    <!-- Left Column: Minimalism Slogans & Copy -->
+    <section class="left-column">
+      <div class="slogan-container">
+        <div class="text-group">
+          <p>need to hold some info for a bit?</p>
+          <p>i'll hold that.</p>
+        </div>
+        
+        <div class="text-group">
+          <p>a tiny place for things you want</p>
+          <p>to remember for a while.</p>
+        </div>
+      </div>
+      
+      <div class="download-group">
+        <span class="download-label">made for your mac's notch</span>
+        <a href="https://github.com/ayesha/TempNoteTaker/releases/download/v1.0.0/hold-that.dmg" class="download-link" download>
+          download for mac
+        </a>
+        <span class="download-tip">First time opening? Right-click (or Control-click) the app icon and select "Open" to bypass macOS Gatekeeper.</span>
+      </div>
+    </section>
+
+    <!-- Right Column: Hero Visuals Loop transition -->
+    <section class="right-column">
+      <div class="hero-image-stack" id="heroImageStack">
+        <img src="assets/hero1.png" alt="Hold That App Today" class="hero-img active" id="heroImg1">
+        <img src="assets/hero2.png" alt="Hold That App Yesterday" class="hero-img" id="heroImg2">
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Scroll Presentation Section (Page 2 & Page 3 Scroll Transition) -->
+  <section class="scroll-presentation" id="scrollPresentation">
+    <div class="presentation-container">
+      
+      <!-- Left Column: Dynamic Copy Slides -->
+      <div class="presentation-left">
+        <!-- Slide 2: Day copy (Page 2) -->
+        <div class="slide-copy active" id="slidePage2">
+          <div class="text-group">
+            <p class="section-tag">how it works</p>
+            <p>hold that lives in your notch.</p>
+          </div>
+          <div class="text-group">
+            <p>there are only two places.</p>
+            <p>today and yesterday.</p>
+          </div>
+        </div>
+
+        <!-- Slide 3: Night copy (Page 3) -->
+        <div class="slide-copy" id="slidePage3">
+          <div class="text-group">
+            <p>at midnight, today's notes become yesterday's notes.</p>
+            <p>yesterday disappears the next night.</p>
+            <p>if you need to keep something, move it somewhere permanent.</p>
+            <p class="text-space"></p>
+            <p>if you don't, we'll let it go.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Mac Desktop + App Mockup Overlays -->
+      <div class="presentation-right">
+        <div class="mac-mockup-wrapper" id="macMockupWrapper">
+          <!-- Full today screenshot (mac + app open on today tab) -->
+          <img src="assets/page-2-3/full-today.png" alt="Today tab" class="mac-full-img" id="mockupToday">
+          <!-- Full yesterday screenshot (mac + app open on yesterday tab) -->
+          <img src="assets/page-2-3/full-yesterday.png" alt="Yesterday tab" class="mac-full-img" id="mockupYesterday">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Page 4 Section: Day mode background fade and Parallax clutter elements -->
+
+  <section class="clutter-section" id="clutterSection">
+    <div class="clutter-grid-wrapper">
+      
+      <!-- Card 1: Shipping or Tracking number (image 19 / 1.png) -->
+      <div class="clutter-card card-style-pill" id="clutterCard1" data-speed="1.4">
+        <img src="assets/slide-in-elements/1.png" alt="Tracking note shape" class="clutter-card-img">
+      </div>
+
+      <!-- Card 2: Bug noticed (image 15 / 2.png) -->
+      <div class="clutter-card card-style-portrait" id="clutterCard2" data-speed="1.9">
+        <img src="assets/slide-in-elements/2.png" alt="Bug note shape" class="clutter-card-img">
+      </div>
+
+      <!-- Card 3: Measurements for a shelf (image 18 / 5.png) -->
+      <div class="clutter-card card-style-square" id="clutterCard3" data-speed="1.1">
+        <img src="assets/slide-in-elements/5.png" alt="Measurements note shape" class="clutter-card-img">
+      </div>
+
+      <!-- Card 4: Ask Mike (image 16 / 3.png) -->
+      <div class="clutter-card card-style-square" id="clutterCard4" data-speed="2.3">
+        <img src="assets/slide-in-elements/3.png" alt="Mike note shape" class="clutter-card-img">
+      </div>
+
+      <!-- Card 5: Address copying (image 17 / 4.png) -->
+      <div class="clutter-card card-style-pill-wide" id="clutterCard5" data-speed="1.6">
+        <img src="assets/slide-in-elements/4.png" alt="Address note shape" class="clutter-card-img">
+      </div>
+
+      <!-- Card 6: Deal with later (image 14 / 6.png) -->
+      <div class="clutter-card card-style-tall" id="clutterCard6" data-speed="2.6">
+        <img src="assets/slide-in-elements/6.png" alt="Later note shape" class="clutter-card-img">
+      </div>
+
+    </div>
+
+    <!-- Final Summary Text Block -->
+    <div class="clutter-summary" id="clutterSummary">
+      <div class="clutter-summary-text">
+        <p class="summary-paragraph">They're little bits of information temporarily occupying your attention until they can go somewhere else,</p>
+        <p class="summary-accent">or nowhere at all.</p>
+        <div class="download-group">
+          <span class="download-label">made for your mac's notch</span>
+          <a href="https://github.com/ayesha/TempNoteTaker/releases/download/v1.0.0/hold-that.dmg" class="download-link" download>
+            download for mac
+          </a>
+          <span class="download-tip">First time opening? Right-click (or Control-click) the app icon and select "Open" to bypass macOS Gatekeeper.</span>
+        </div>
+      </div>
+      <div class="clutter-summary-mockup">
+        <img src="assets/slide-in-elements/mockup for page 4.png" alt="Mockup for Page 4" class="clutter-mockup-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 5 Section: Folder Mockup and Note Fall Animation -->
+  <section class="blank-section" id="page5">
+    <div class="page5-container">
+      <div class="page5-canvas-wrapper">
+        <!-- Rounded Card Background Frame -->
+        <div class="page5-card-frame">
+          <img src="assets/page-5/background.png" alt="Green background" class="page5-card-bg">
+        </div>
+        <!-- Folder and notes wrapper container -->
+        <div class="page5-folder-container">
+          <!-- Folder canvas -->
+          <img src="assets/page-5/canvas.png" alt="Folder canvas" class="page5-canvas">
+          <!-- Note piece (2.png) -->
+          <img src="assets/page-5/2.png" alt="Note piece" class="page5-note" id="page5Note">
+          <!-- Red clip (3.png) -->
+          <img src="assets/page-5/3.png" alt="Red clip" class="page5-clip" id="page5Clip">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pages 6-8 Section: Pinned Slot Machine Roller -->
+  <section class="slot-machine-section" id="slotMachineSection">
+    <div class="slot-machine-container">
+      
+      <!-- Left Column: Rolling Slot Machine Text -->
+      <div class="slot-text-col">
+        <span class="static-prefix">this is <strong>not</strong> a </span>
+        <div class="keyword-roller" id="letterRollerContainer">
+          <!-- Letter reels will be dynamically injected here -->
+        </div>
+      </div>
+
+      <!-- Right Column: Swapping Illustrations -->
+      <div class="slot-illustration-col">
+        <div class="illustration-viewport">
+          <!-- Frame 1 (Page 6): Yellow Flowers -->
+          <div class="slot-ill active" id="illPage6">
+            <img src="assets/page-6-11/Untitled_Artwork-1 2 1.png" alt="Yellow wobbly shapes" class="slot-ill-img">
+          </div>
+          <!-- Frame 2 (Page 7): Blue Shapes -->
+          <div class="slot-ill" id="illPage7">
+            <img src="assets/page-6-11/Untitled_Artwork-2 2 1.png" alt="Blue wobbly shapes" class="slot-ill-img">
+          </div>
+          <!-- Frame 3 (Page 8): Orange Stack -->
+          <div class="slot-ill" id="illPage8">
+            <div class="orange-stack-wrapper">
+              <img src="assets/page-6-11/Untitled_Artwork-3 2 1.png" alt="Orange stack" class="orange-stack-img">
+            </div>
+          </div>
+          <!-- Orange Dot -->
+          <img src="assets/page-6-11/Object.png" alt="Orange dot" class="orange-dot-img" id="orangeDotPage8">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Pages 9-11 Section: Pinned Hand-Washing flips -->
+  <section class="hand-wash-section" id="handWashSection">
+    <div class="hand-wash-container">
+      
+      <!-- Left Column: Multiline Text Reveal -->
+      <div class="hand-text-col">
+        <p class="hand-static-line">it's closer to writing something on your hand.</p>
+        <p class="hand-dynamic-line" id="handDynamicLine">
+          except your <span class="hand-fade-span" id="handFadeSpan">hand gets washed.</span>
+        </p>
+        <div class="download-group" id="handDownloadGroup">
+          <span class="download-label">made for your mac's notch</span>
+          <a href="https://github.com/ayesha/TempNoteTaker/releases/download/v1.0.0/hold-that.dmg" class="download-link" download>
+            download for mac
+          </a>
+          <span class="download-tip">First time opening? Right-click (or Control-click) the app icon and select "Open" to bypass macOS Gatekeeper.</span>
+        </div>
+      </div>
+
+      <!-- Right Column: Hand washing frame sequence -->
+      <div class="hand-illustration-col">
+        <div class="hand-viewport">
+          <!-- Frame 1 (Page 9): Hand with drawing -->
+          <img src="assets/page-6-11/Untitled_Artwork-1 3.png" alt="Hand with mark" class="hand-frame active" id="handFrameDraw">
+          <!-- Frame 2 (Page 10): Hand in water -->
+          <img src="assets/page-6-11/Untitled_Artwork-2 3.png" alt="Hand with water" class="hand-frame" id="handFrameWater">
+          <!-- Frame 3 (Page 11): Clean hand -->
+          <img src="assets/page-6-11/Untitled_Artwork-3 3.png" alt="Clean hand" class="hand-frame" id="handFrameClean">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Page 12 Section: I Still Don't Get It (IDGI) -->
+  <section class="idgi-section" id="idgiSection">
+    <div class="idgi-container">
+      
+      <!-- Left Column: Details Copy -->
+      <div class="idgi-text-col">
+        <h2 class="idgi-title">i still don't get what it is</h2>
+        <div class="idgi-body-text">
+          <p class="font-lacquer idgi-heading">fair enough.</p>
+          <p>hold that is a temporary notes app for your mac. it lives in your menu bar and opens as a small drawer on the right side of your screen.</p>
+          
+          <p class="font-lacquer idgi-heading mt-space">you can use it to:</p>
+          <ul class="idgi-list">
+            <li>write a quick note</li>
+            <li>make a checklist</li>
+            <li>paste text or links from anywhere</li>
+            <li>copy everything back out later</li>
+          </ul>
+          
+          <p class="mt-space">your notes live in one of two places: <span class="text-blue">today</span> or <span class="text-blue">yesterday</span>.</p>
+          <p>at midnight, everything in today moves to yesterday. anything that was already in yesterday is <span class="text-red">deleted</span>.</p>
+          
+          <p class="mt-space">today is where you write. yesterday is read-only. you can copy anything you want to keep, but you can't edit it. if it still matters, move it somewhere permanent.</p>
+          
+          <p class="font-lacquer idgi-heading mt-space">some examples</p>
+          <ul class="idgi-list">
+            <li>you're reading a substack article and collecting quotes to move into notion/obsidian/sublime later.</li>
+            <li>you're filling out a form and need somewhere to hold an address while you copy it between fields.</li>
+            <li>you're researching a trip and collecting a few links before deciding what's useful.</li>
+            <li>you're on a call and need to write down a tracking number.</li>
+            <li>you're in the middle of work and suddenly remember to book a dentist appointment.</li>
+          </ul>
+          
+          <p class="mt-space">it's just a small place to hold things until you're ready for them. nothing more.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Mockup Animation -->
+      <div class="idgi-mockup-col">
+        <div class="idgi-mockup-wrapper">
+          <div class="idgi-image-stack" id="idgiImageStack">
+            <img src="assets/prod1.png" alt="Hold That App Today" class="idgi-img active" id="idgiImg1">
+            <img src="assets/prod2.png" alt="Hold That App Yesterday" class="idgi-img" id="idgiImg2">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GSAP & ScrollTrigger Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <!-- Main Script Logic -->
+  <script src="script.js"></script>
+</body>
+</html>

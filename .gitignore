@@ -1,0 +1,17 @@
+# Build and packaging folders
+build/
+dist/
+TempNoteTaker.app/
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# macOS files
+.DS_Store
+
+# Temporary scratch and model config files
+.claude/
+scratch/
