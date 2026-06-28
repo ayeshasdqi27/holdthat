@@ -58,24 +58,24 @@ EOF
 # Create a temporary read-write disk image
 echo "Creating temporary read-write disk image..."
 TEMP_DMG="dist/pack.temp.dmg"
-MNT_DIR="$(pwd)/dist/mnt"
+VOL="/Volumes/Hold That"
 rm -f "$TEMP_DMG"
 hdiutil create -srcfolder "$DMG_STAGE" -volname "Hold That" -fs HFS+ -format UDRW -ov "$TEMP_DMG"
 
 # Eject any stale "Hold That" volume from previous runs
-hdiutil detach "/Volumes/Hold That" -force 2>/dev/null || true
+hdiutil detach "$VOL" -force 2>/dev/null || true
+sleep 1
 
-# Mount the temporary disk image as read-write at an explicit mountpoint
+# Mount the temporary disk image as read-write at /Volumes/Hold That
+# (Finder must see it at /Volumes/ for AppleScript to find it by disk name)
 echo "Mounting temporary disk image..."
-rm -rf "$MNT_DIR"
-mkdir -p "$MNT_DIR"
-hdiutil attach "$TEMP_DMG" -readwrite -noverify -noautoopen -mountpoint "$MNT_DIR"
+hdiutil attach "$TEMP_DMG" -readwrite -noverify -noautoopen -mountpoint "$VOL"
 sleep 2
 
 # Copy custom background image to disk image (under hidden folder)
 echo "Setting custom background image..."
-mkdir -p "$MNT_DIR/.background"
-cp Ref/dmg_background.png "$MNT_DIR/.background/background.png"
+mkdir -p "$VOL/.background"
+cp Ref/dmg_background.png "$VOL/.background/background.png"
 
 # Sync writes to disk before Finder sees the volume
 sync
@@ -108,8 +108,7 @@ APPLESCRIPT
 
 # Unmount using the explicit mountpoint
 echo "Unmounting temporary disk image..."
-hdiutil detach "$MNT_DIR"
-rm -rf "$MNT_DIR"
+hdiutil detach "$VOL"
 
 # Convert the read-write disk image into the final compressed DMG
 echo "Converting to compressed read-only DMG (dist/hold-that.dmg)..."
