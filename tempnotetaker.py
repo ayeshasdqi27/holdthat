@@ -46,6 +46,8 @@ from Cocoa import (
     NSMakeSize,
     NSPanel,
     NSScrollView,
+    NSMenu,
+    NSMenuItem,
     NSStatusBar,
     NSStatusWindowLevel,
     NSTextField,
@@ -320,13 +322,23 @@ class AppDelegate(NSObject):
         NOTES_DIR.mkdir(parents=True, exist_ok=True)
         self.current_tab = "today"
 
-        # Status bar tab
+        # Status bar item
         self.status_item = NSStatusBar.systemStatusBar().statusItemWithLength_(NSVariableStatusItemLength)
         button = self.status_item.button()
         button.setImage_(self._make_tab_icon())
         button.image().setTemplate_(False)
         button.setAction_("togglePanel:")
         button.setTarget_(self)
+        # Fire action on both left-click (mask 2) and right-click (mask 8)
+        button.sendActionOn_(2 | 8)
+
+        # Build right-click menu (stored as ivar so it isn't GC'd)
+        self._status_menu = NSMenu.alloc().init()
+        quit_item = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_(
+            "Quit Hold That", "quitApp:", ""
+        )
+        quit_item.setTarget_(self)
+        self._status_menu.addItem_(quit_item)
 
         # Panel
         rect = NSMakeRect(0, 0, PANEL_W, PANEL_H)
@@ -428,12 +440,23 @@ class AppDelegate(NSObject):
 
     # --- Actions -----------------------------------------------------------
     def togglePanel_(self, sender):
+        # Right-click → show quit menu instead of toggling panel
+        event = NSApplication.sharedApplication().currentEvent()
+        if event and event.type() == 3:  # NSEventTypeRightMouseDown
+            self.status_item.popUpStatusItemMenu_(self._status_menu)
+            return
         if self.panel.isVisible():
             self._hide_panel()
         else:
             self._show_panel()
 
     togglePanel_ = objc.selector(togglePanel_, signature=b"v@:@")
+
+    def quitApp_(self, sender):
+        self._save_active_notes()
+        NSApplication.sharedApplication().terminate_(self)
+
+    quitApp_ = objc.selector(quitApp_, signature=b"v@:@")
 
     def textChanged_(self, note):
         self._save_active_notes()
